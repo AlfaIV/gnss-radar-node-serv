@@ -1,4 +1,6 @@
 const express = require("express");
+const ftp = require('basic-ftp');
+const { Readable } = require("stream");
 
 const app = express();
 const port = 3000;
@@ -12,7 +14,33 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 
+const FTP_user={
+  host: "ftp",  
+  user: "user",    
+  password: "password",
+  secure: false             
+}
 
+
+async function uploadFile(name, file) {
+    console.log("Загрузка файла", name, file);
+    const client = new ftp.Client();
+    client.ftp.verbose = true;
+    try {
+        await client.access(FTP_user);
+        const stream = new Readable();
+        stream.push(JSON.stringify(file, null, 2)); // Преобразуем объект в строку JSON
+        stream.push(null); // Завершаем поток
+
+        // Загружаем поток на FTP-сервер
+        await client.uploadFrom(stream, name);
+        console.log("Файл успешно загружен!");
+    } catch (error) {
+        console.error("Ошибка при загрузке файла:", error);
+    } finally {
+        client.close();
+    }
+}
 
 app.get("/", (req, res) => {
   res.send(`Test!'`);
@@ -31,11 +59,19 @@ app.post("/sendTask/", (req, res) => {
   const receivedData = req.body;
   
   console.log(receivedData);
-
-  res.json({
-    message: "Data received successfully!",
-    data: receivedData,
-    status: 200,
+  uploadFile(receivedData.id, receivedData) // Передаем имя файла и данные
+  .then(() => {
+      res.json({
+          message: "Data received successfully!",
+          data: receivedData,
+          status: 200,
+      });
+  })
+  .catch(error => {
+      res.status(500).json({
+          message: "Ошибка при загрузке файла",
+          error: error.message,
+      });
   });
 });
 

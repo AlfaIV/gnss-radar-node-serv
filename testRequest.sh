@@ -1,0 +1,18 @@
+curl 'http://localhost:3000/sendTask' \
+  -H 'Accept: application/json, text/plain, */*' \
+  -H 'Accept-Language: ru,en;q=0.9' \
+  -H 'Cache-Control: no-cache' \
+  -H 'Connection: keep-alive' \
+  -H 'Content-Type: application/json' \
+  -H 'Origin: http://localhost:5173' \
+  -H 'Pragma: no-cache' \
+  -H 'Referer: http://localhost:5173/' \
+  -H 'Sec-Fetch-Dest: empty' \
+  -H 'Sec-Fetch-Mode: cors' \
+  -H 'Sec-Fetch-Site: same-site' \
+  -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 YaBrowser/23.1.5.750 (beta) Yowser/2.5 Safari/537.36' \
+  -H 'sec-ch-ua: "Not?A_Brand";v="8", "Chromium";v="108", "Yandex";v="23"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Linux"' \
+  --data-raw '{"name":"ГНСС","description":"уцкайцуаккуцайуцкак","id":"d4406aeb-04e0-465f-b69b-c0d3d78909f8","backendID":"d4406aeb-04e0-465f-b69b-c0d3d78909f8","targetID":"0db15e43-a9c0-4f43-b138-b6559742c50f","signal":"all","groupingType":"all","startDataTime":"2024-11-19T14:48:42.882Z","endDataTime":"2024-11-19T15:48:42.882Z"}' \
+  --compressed

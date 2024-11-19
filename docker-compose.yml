@@ -11,11 +11,11 @@ services:
       - FTP_USER_PASS=password
       - FTP_USER_HOME=/home/user
     volumes:
-      - ./ftpdata:${FTP_PATH}
+      - ./ftpdata:/home/alfap/Projects/ftp_server/ftpData
   
   bff_server:
     build: .
     ports:
-      - "1000:3000"
+      - "3000:3000"
     depends_on:
       - ftp
