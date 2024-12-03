@@ -1,0 +1,11 @@
+{
+  "name": "Задание 2",
+  "description": "Описание 2",
+  "id": "8d665961-4bf3-47db-9da5-bbe7f4b4c099",
+  "backendID": "8d665961-4bf3-47db-9da5-bbe7f4b4c099",
+  "targetID": "629c3953-8b95-4d91-a866-71466d3c31e8",
+  "signal": "L2",
+  "groupingType": "Glonass",
+  "startDataTime": "2024-11-22T11:10:21.105Z",
+  "endDataTime": "2024-11-25T11:10:21.105Z"
+}

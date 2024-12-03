@@ -14,10 +14,17 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 
+// const FTP_user={
+//   host: "ftp",  
+//   user: "user",    
+//   password: "password",
+//   secure: false             
+// }
+
 const FTP_user={
-  host: "ftp",  
-  user: "user",    
-  password: "password",
+  host: "172.16.61.211",  
+  user: "gnss-tasker",    
+  password: "gnss11tasker",
   secure: false             
 }
 
@@ -59,7 +66,8 @@ app.post("/sendTask/", (req, res) => {
   const receivedData = req.body;
   
   console.log(receivedData);
-  uploadFile(receivedData.id, receivedData) // Передаем имя файла и данные
+  // uploadFile(receivedData.id, receivedData) // Передаем имя файла и данные
+  uploadFile("tasks/data.json", receivedData) // Передаем имя файла и данные
   .then(() => {
       res.json({
           message: "Data received successfully!",
